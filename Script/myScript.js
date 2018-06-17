@@ -328,17 +328,18 @@ else  {
 	if (a == 'register'){ 
 	
 	for (i=0; i < Form_id001.length; i++){
-		alert(111);
-		if(Form_id001[i].value == "" && i !== Form_id001.length ) return false;
-//alert(111);
-	}
-
-//alert(Form_id001[i].value);
-
-	}
-	alert(Form_id001.length+" "+i);
-}
 	
+    if (!Form_id001[i].checkValidity())  {
+        alert(Form_id001[i].validationMessage+" "+ Form_id001[i].placeholder);
+		return false;
+    }  
+		
+	
+} 
+alert();
+	}
+	
+}
 }	
 	//Form Login-Register
 
@@ -359,8 +360,9 @@ function Login_Form_Function() {
     Login_Form_id02.value = "";
     Login_Form_id03.value = "";
     Login_Form_id04.value = "";
+	Login_Form_id01.type = "text";
     Login_Form_id02.type = "text";
-    Login_Form_id03.type = "text";
+    Login_Form_id03.type = "email";
     Login_Form_id04.type = "password";
     Login_Form_id05.innerHTML = "Register";
     Login_Form_id05.attributes.getNamedItem("onclick").value = "MenuLogin_Login('register')";

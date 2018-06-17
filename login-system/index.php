@@ -17,7 +17,7 @@ if (isset($_SESSION['logged_in']))
 
 <?php 
 
-//print_r($_POST);
+print_r($_POST);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
     if (isset($_POST['login'])) { //user logging in

@@ -45,7 +45,7 @@ if (isset($_SESSION['logged_in']))
 		<div class="MenuLogin_container">
 			
 			
-			<input class="Login_Form_id01 Form_id001" placeholder="Email Address" type="email" required autocomplete="off" name="email"/><br>
+			<input class="Login_Form_id01 Form_id001" placeholder="Email Address" type="email" required autocomplete="off" name="email" /><br>
 			<input  class="Login_Form_id02 Form_id001" placeholder="Password" type="password" required autocomplete="off" name="password"/><br>
 			<input  class="Login_Form_id03 Form_id001" placeholder="Email Address" type="hidden" required autocomplete="off" name='firstname' /><br>
 			<input  class="Login_Form_id04 Form_id001" placeholder="Password" type="hidden"required autocomplete="off" name='lastname' /><br>
