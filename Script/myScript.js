@@ -317,10 +317,10 @@ function MenuLogin_Login(a){
 			
 				 //alert(this.status);
 			};
-			xhttp.open("POST", "login-system/index.php", true); 
+			xhttp.open("POST", "login-system/login-register.php", true); 
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhttp.send("email="+MenuLogin_Input_login+"&password="+MenuLogin_Input_Pass+"&"+a+"=");
-			alert(xhttp.getAllResponseHeaders());
+			//alert(xhttp.getAllResponseHeaders());
 } else {alert('Login & Password Empety');}
 	}
 else  {
@@ -336,7 +336,21 @@ else  {
 		
 	
 } 
-alert();
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				
+					//document.getElementsByClassName("MenuLogin")[0].innerHTML = this.responseText;
+					//alert(this.responseText);
+				alert(xhttp.getAllResponseHeaders());
+				}
+			
+				 //alert(this.status);
+			};
+			xhttp.open("POST", "login-system/login-register.php", true); 
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("email="+Form_id001[2].value+"&password="+Form_id001[3].value+"&firstname="+Form_id001[0].value+"&lastname="+Form_id001[1].value+"&"+a+"=");
+			//alert(xhttp.getAllResponseHeaders());
 	}
 	
 }
