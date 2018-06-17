@@ -299,30 +299,49 @@ function LoginProfile(){
 //Login in profile
 
 function MenuLogin_Login(a){
-	alert(a);
-	var MenuLogin_Input_login = document.getElementsByClassName("MenuLogin_Input_login")[0].value;
-	var MenuLogin_Input_Pass = document.getElementsByClassName("MenuLogin_Input_Pass")[0].value;
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-		
-			document.getElementsByClassName("MenuLogin")[0].innerHTML = this.responseText;
-		//	alert(this.responseText);
-		alert(xhttp.getAllResponseHeaders());
-		}
+	//alert(a);
+	var Form_id001 = document.getElementsByClassName("Form_id001");
 	
-	     
-  };
-  xhttp.open("POST", "login-system/index.php", true); 
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-   xhttp.send("email="+MenuLogin_Input_login+"&password="+MenuLogin_Input_Pass+"&"+a+"=");
-	//alert(xhttp.getAllResponseHeaders());
+	if (a == 'login'){
+		var MenuLogin_Input_login = document.getElementsByClassName("Login_Form_id01")[0].value;
+		var MenuLogin_Input_Pass = document.getElementsByClassName("Login_Form_id02")[0].value;
+		if (MenuLogin_Input_login !== "" & MenuLogin_Input_Pass !== "" ){
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				
+					//document.getElementsByClassName("MenuLogin")[0].innerHTML = this.responseText;
+					//alert(this.responseText);
+				alert(xhttp.getAllResponseHeaders());
+				}
+			
+				 //alert(this.status);
+			};
+			xhttp.open("POST", "login-system/index.php", true); 
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("email="+MenuLogin_Input_login+"&password="+MenuLogin_Input_Pass+"&"+a+"=");
+			alert(xhttp.getAllResponseHeaders());
+} else {alert('Login & Password Empety');}
+	}
+else  {
+	
+	if (a == 'register'){ 
+	
+	for (i=0; i < Form_id001.length; i++){
+		alert(111);
+		if(Form_id001[i].value == "" && i !== Form_id001.length ) return false;
+//alert(111);
+	}
+
+//alert(Form_id001[i].value);
+
+	}
+	alert(Form_id001.length+" "+i);
 }
 	
-	
+}	
 	//Form Login-Register
-function MenuLogin_Login(q) {
-    alert(q);}
+
     
 
 function Login_Form_Function() {
