@@ -311,8 +311,8 @@ function MenuLogin_Login(a){
 			if (this.readyState == 4 && this.status == 200) {
 				
 					//document.getElementsByClassName("MenuLogin")[0].innerHTML = this.responseText;
-					//alert(this.responseText);
-				alert(xhttp.getAllResponseHeaders());
+					alert(this.responseText);
+				//alert(xhttp.getAllResponseHeaders());
 				}
 			
 				 //alert(this.status);
@@ -340,9 +340,12 @@ else  {
 			xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				
+						alert(this.responseText);
+					
+				
 					//document.getElementsByClassName("MenuLogin")[0].innerHTML = this.responseText;
-					//alert(this.responseText);
-				alert(xhttp.getAllResponseHeaders());
+				
+				//alert(xhttp.getAllResponseHeaders());
 				}
 			
 				 //alert(this.status);
