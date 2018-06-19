@@ -1,6 +1,11 @@
 <?php
 session_start();
-
+if ( $_SESSION['logged_in'] != 1   $_SESSION['active'] = 0) {
+  $_SESSION['message'] = "You must log in before viewing your profile page!";
+      
+  echo "You need activate account";
+  //header("location: ../index4.php");
+}
 
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {

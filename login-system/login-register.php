@@ -5,13 +5,17 @@ require 'db.php';
 session_start();
 //print_r($_POST);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
-{
+{		
+
+		
+		
+		
     if (isset($_POST['login'])) { //user logging in
 
        $email = $mysqli->escape_string($_POST['email']);
 	   $result = $mysqli->query("SELECT * FROM users WHERE email='$email'");
 			if ( $result->num_rows == 0 ){ // User doesn't exist
-			$_SESSION['message'] = "User with that email doesn't exist!";
+	$_SESSION['message'] = "User with that email doesn't exist!";
     echo "User with that email doesn't exist!";
 }
         
@@ -27,14 +31,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         
         // This is how we'll know the user is logged in
         $_SESSION['logged_in'] = true;
+		 if ( !$user['active'] ){
+             
+		
+		
+		$first_name = 	$user['first_name'];
+		$last_name = 	$user['last_name'];
+		$email = 		$user['email'];
+		$hash = $user['hash']; 
+        // Send registration confirmation link (verify.php)
+        $to      = $email;
+        $subject = 'Account Verification ( clevertechie.com )';
+		$headers  = "Content-type: text/html; charset=UTF-8 \r\n"; 
+		$headers .= "From: Магазин DDSYS <info@ddsys.ru>\r\n"; 
+		$headers .= "Reply-To: info@ddsys.ru\r\n"; 
+        $message_body = '
+        Hello '.$first_name.',
+		
 
-        header("location: profile.php");
-    }
+        Thank you for signing up!
+
+        Please click this link to activate your account:
+
+        http://test.ddsys.ru/login-system/verify.php?email='.$email.'&hash='.$hash;  
+
+        mail( $to, $subject, $message_body, $headers );
+		 echo
+              '
+              Account is unverified, please confirm your email by clicking
+              on the email link!
+              ';
+          }
+		  if ( $user['active'] ){
+			  echo "Youloginok";
+			   
+		  }
+		  //header("location: ../index4.php");
+		  
+		  
+       
+    } 
     else {
         $_SESSION['message'] = "You have entered wrong password, try again!";
         echo "You have entered wrong password, try again!";
     }
-	}
+	} 
 }
 
 
@@ -96,7 +137,7 @@ else { // Email doesn't already exist in a database, proceed...
 
         mail( $to, $subject, $message_body, $headers );
 
-        header("location: profile.php"); 
+        header("location: ../index4.php"); 
 
     }
 

@@ -2,6 +2,15 @@
 require '../login-system/db.php';
 
 session_start();
+
+if ( $_SESSION['logged_in'] != 1 AND  $_SESSION['active'] = 0) {
+  $_SESSION['message'] = "You must log in before viewing your profile page!";
+      
+  echo "You need activate account";
+  header("location: login-system/error.php");
+} 
+
+
 $product_ids = array();
 //unset($_SESSION['shopping_cart']);
 //session_destroy();

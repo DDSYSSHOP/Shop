@@ -311,7 +311,7 @@ function MenuLogin_Login(a){
 			if (this.readyState == 4 && this.status == 200) {
 				
 					//document.getElementsByClassName("MenuLogin")[0].innerHTML = this.responseText;
-					alert(this.responseText);
+					alert(this.responseText == "Youloginok");
 				//alert(xhttp.getAllResponseHeaders());
 				}
 			
