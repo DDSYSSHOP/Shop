@@ -63,7 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
               ';
           }
 		  if ( $user['active'] ){
-			  echo "Youloginok";
+			$first_name = 	$user['first_name'];
+			$Arr_answer_oklogin = array("$first_name", 'You login ok');
+			$myJSON = json_encode($Arr_answer_oklogin );
+		    echo $myJSON;
+			  //echo $first_name;
 			   
 		  }
 		  //header("location: ../index4.php");

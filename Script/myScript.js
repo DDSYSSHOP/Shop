@@ -91,7 +91,7 @@ function slideUp() {
 //Отображение количества товаров в корзине
 function AddCart(id,name,price,quantity){
 //alert(id);
-
+document.getElementsByClassName("shoppingbasket1")[0].style.display = "block";
 var a = document.getElementsByClassName("basketitems")[0];
 	//alert(a);
 	if (a == undefined){
@@ -284,6 +284,7 @@ function LoginProfile(){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+		//alert(this.responseText);
 	 document.getElementsByClassName("menu-box")[0].style.display = "none";
 	 document.getElementsByClassName("vertical-menu")[0].style.display = "none";
 	// document.getElementsByClassName("vertical-menu")[0].classList.remove("vertical-menu");
@@ -301,7 +302,9 @@ function LoginProfile(){
 function MenuLogin_Login(a){
 	//alert(a);
 	var Form_id001 = document.getElementsByClassName("Form_id001");
-	
+	var  MenuLogin = document.getElementsByClassName("MenuLogin")[0];
+	var  header_login = document.getElementsByClassName("header_login")[0];
+	var  header_login_name = document.getElementsByClassName("header_login_name")[0];
 	if (a == 'login'){
 		var MenuLogin_Input_login = document.getElementsByClassName("Login_Form_id01")[0].value;
 		var MenuLogin_Input_Pass = document.getElementsByClassName("Login_Form_id02")[0].value;
@@ -311,7 +314,14 @@ function MenuLogin_Login(a){
 			if (this.readyState == 4 && this.status == 200) {
 				
 					//document.getElementsByClassName("MenuLogin")[0].innerHTML = this.responseText;
-					alert(this.responseText == "Youloginok");
+					alert( JSON.parse(this.responseText)[1]);
+					if (JSON.parse(this.responseText)[1] == String("You login ok")){
+						header_login_name.innerHTML = JSON.parse(this.responseText)[0];
+						header_login.attributes.getNamedItem("onclick").value = "LoginProfile()";
+						MenuLogin.style.display = "none";
+						
+					}
+				
 				//alert(xhttp.getAllResponseHeaders());
 				}
 			

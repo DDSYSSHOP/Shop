@@ -1,14 +1,9 @@
 <?php
 session_start();
-if ( $_SESSION['logged_in'] != 1   $_SESSION['active'] = 0) {
-  $_SESSION['message'] = "You must log in before viewing your profile page!";
-      
-  echo "You need activate account";
-  //header("location: ../index4.php");
-}
+
 
 // Check if user is logged in using the session variable
-if ( $_SESSION['logged_in'] != 1 ) {
+if ( $_SESSION['logged_in'] != 1  and $_SESSION['active'] != 1) {
   $_SESSION['message'] = "You must log in before viewing your profile page!";
   echo "You need login";  
   header("location: ../index4.php");
@@ -24,7 +19,7 @@ $sql_id = "SELECT DISTINCT  `order_id` FROM Cart WHERE DATE_SUB(CURDATE(),INTERV
 	
 	while ($row_menu =mysqli_fetch_assoc($result_menu)) :
 	$row_id = $row_menu['order_id'];
-	$sql = "SELECT  product_name, product_id, quantity, price FROM Cart WHERE user_email='$user_email' AND order_id='$row_id'";
+	$sql = "SELECT  product_name, ordered, product_id, quantity, price FROM Cart WHERE user_email='$user_email' AND order_id='$row_id'";
 	$result = $mysqli->query($sql) or die("Ошибка " . $mysqli->error);
 
 	//print_r ($row_id);
@@ -35,7 +30,7 @@ $sql_id = "SELECT DISTINCT  `order_id` FROM Cart WHERE DATE_SUB(CURDATE(),INTERV
         <title>Shopping Cart (working)</title>
         <link rel="stylesheet" type="text/css" href="cart.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="Script.js"></script>
+		<script src="../Script/Script.js"></script>
     </head>
 	<body>
 	
@@ -60,13 +55,24 @@ $sql_id = "SELECT DISTINCT  `order_id` FROM Cart WHERE DATE_SUB(CURDATE(),INTERV
 			 $total = 0;  
 			 $countinput = 0;
 			 $counttotal = 0;
+			 
+			 
 			while ($row =mysqli_fetch_assoc($result)) :
 			
+
+			 if ($row['ordered']) {
+				 $productpayd =  disabled;
+			 } else {
+				 
+				$productpayd =  enabled;
+			 }
+			 
+			 
 			?>
 			<tr>  
            <td class="input_name"><?php echo $row['product_name']; ?></td> 
 		   
-           <td class="input_count"><input class="input_count_form" type="number" oninput="countvalue(<?php echo $row['product_id']; ?>,'<?php echo $row[' product_name'];?>',<?php echo $row['price']; ?>,this.value)"  min="0" max="100" value =<?php echo $row['quantity']; ?> ></td>  
+           <td class="input_count"><input class="input_count_form" type="number" oninput="countvalue(<?php echo $row['product_id']; ?>,'<?php echo $row[' product_name'];?>',<?php echo $row['price']; ?>,this.value)"  min="0" max="100" value =<?php echo $row['quantity']; ?> <?php echo $productpayd; ?> ></td>  
            <td class="input_price">$ <?php echo $row['price']; ?></td>  
            <td  class="input_sum">$ <?php echo number_format($row['quantity'] * $row['price'], 2); ?></td>  
            <td class="input_remove">

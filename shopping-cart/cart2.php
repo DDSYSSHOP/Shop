@@ -7,7 +7,7 @@ if ( $_SESSION['logged_in'] != 1 AND  $_SESSION['active'] = 0) {
   $_SESSION['message'] = "You must log in before viewing your profile page!";
       
   echo "You need activate account";
-  header("location: login-system/error.php");
+  header("location: ../index4.php");
 } 
 
 
@@ -82,9 +82,9 @@ function pre_r($array){
     print_r($array);
     echo '</pre>';
 }
-unset($_SESSION);
+//unset($_SESSION);
 //unset ($_SESSION['shopping_count']);
-session_destroy();
+//session_destroy();
 ?>
 
 <!DOCTYPE html>

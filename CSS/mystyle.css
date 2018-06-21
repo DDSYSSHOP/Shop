@@ -35,10 +35,19 @@ body {
 	 width: 10%;
 	 //margin-right: 30%;
 }
-.header-icon{
-	margin-right: 10%;
-	text-align: right;
+
+.header_login{
+	
+	left: 60px;
+	position: relative;
+	//text-align: right;
+
 }
+.header_icon{
+	
+  text-align: center;
+}
+
 .he_search{
 	 padding: 10px 10px;
 	 width: 200px;

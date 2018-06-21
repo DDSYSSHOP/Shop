@@ -18,7 +18,11 @@ if (isset($_SESSION['logged_in']))
 	//$loginindex = "login-system/index.php";
 	
 }
-
+ if (!isset($_SESSION['shopping_cart']))
+	 
+	 {
+		 $displaycart = "display:none";
+	 }
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +39,8 @@ if (isset($_SESSION['logged_in']))
 <tr>
   <td class="header1" >MBE-PerformansShop</td>
   <td class="header2"><input class="he_search" type="text" placeholder="поиск" name="search2"></td>
-  <td class="header3"><a class="header_login" onclick="<?php echo $loginindex;?>" ><div class="header-icon"><i class="fa fa-user-circle-o" style="font-size:34px"></i></a>
-  <div class="header_login-name"><?php echo $_SESSION['first_name']; ?></div></div></td>
+  <td class="header3"><a class="header_login" onclick=<?php echo $loginindex; ?>  ><div class="header_icon"><i class="fa fa-user-circle-o" style="font-size:34px"></i>
+  <div class="header_login_name"><?php echo $_SESSION['first_name']; ?></div></div></a></td>
 </tr>
 </table>
   <!-- Меню Логин1 -->
@@ -94,7 +98,7 @@ if (isset($_SESSION['logged_in']))
 </ul>
   </div> 
  
-<div class="shoppingbasket1"> 
+<div class="shoppingbasket1" style=<?php echo $displaycart; ?> > 
 	<div class="shoppingbasket" onclick="cart()" >
 		<div class="top"></div>
 		<div class="bottom"></div>
