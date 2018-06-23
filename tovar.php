@@ -1,6 +1,6 @@
 
 <?php
-$q = $_REQUEST["q"];
+$q = $_REQUEST["q"]; 
 require_once 'connection.php'; // подключаем скрипт
 // подключаемся к серверу
 $link = mysqli_connect($host, $user, $password, $database) 
