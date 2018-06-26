@@ -1,0 +1,38 @@
+
+
+# del .php
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+
+
+DirectoryIndex index index.php
+DirectorySlash off
+Options -Indexes -MultiViews
+
+RewriteCond %{REQUEST_URI} ^/index(.*)$ [OR]
+RewriteCond %{REQUEST_URI} ^/index[.]+(\w+)$
+RewriteRule . / [R=301,L]
+
+
+
+
+	
+	
+# remove trailing slashes
+# if want external redirect use correct external redir [R=301,L] or [R=301] for correct internal or simple redir [L]
+RewriteCond %{REQUEST_URI} !^/$
+RewriteCond %{REQUEST_URI} (.*)/$
+RewriteRule . %1 [R=301,L,E=NS:1,QSA]
+
+# RewriteCond %{REQUEST_FILENAME} !/
+# RewriteCond %{HTTP_HOST} !^test.ddsys.ru$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} ^/(.*)$
+RewriteRule ^(.*)$ /redirectold.php?productid=%{REQUEST_URI} [L]
+
+# ErrorDocument 404 /404.php
+
