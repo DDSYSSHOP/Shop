@@ -1,11 +1,11 @@
 
 <?php
-$q = $_REQUEST["q"]; 
+$q = $_REQUEST["q"];
 require_once 'connection.php'; // подключаем скрипт
 // подключаемся к серверу
 $link = mysqli_connect($host, $user, $password, $database) 
         or die("Ошибка " . mysqli_connect_error($link));
-mysqli_set_charset($link, 'utf8');
+		mysqli_set_charset($link, 'utf8');
 $tovar =  "SELECT mx_virtuemart_product_medias.virtuemart_product_id,
 mx_virtuemart_product_medias.virtuemart_media_id,
 mx_virtuemart_products.product_sku,

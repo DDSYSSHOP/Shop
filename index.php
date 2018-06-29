@@ -37,7 +37,7 @@ if (isset($_SESSION['logged_in']))
 
 <table class="header0">
 <tr>
-  <td class="header1" >MBE-PerformansShop</td>
+  <td class="header1" ><a href="index.php" > БMBE-PerformansShop</a></td>
   <td class="header2"><input class="he_search" type="text" placeholder="поиск" name="search2"></td>
   <td class="header3"><a class="header_login" onclick=<?php echo $loginindex; ?>  ><div class="header_icon"><i class="fa fa-user-circle-o" style="font-size:34px"></i>
   <div class="header_login_name"><?php echo $_SESSION['first_name']; ?></div></div></a></td>
